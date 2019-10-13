@@ -1,100 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>大事件-后台登录页</title>
-    <link rel="stylesheet" type="text/css" href="css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <!-- 导入bs的样式 -->
-    <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css" />
-  </head>
 
-  <body>
-    <div class="main_wrap">
-      <div class="header">
-        <a href="#" class="logo"><img src="images/logo.png" alt=""/></a>
-        <div class="copyright">
-          CopyRight © 2019 深圳百秀信息技术股份有限公司<br />All Rights Reserved
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>大事件-后台登录页</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <!-- 导入bs的样式 -->
+  <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css" />
+</head>
 
-      <div class="login_form_con">
-        <div class="login_title"></div>
-        <form class="login_form">
-          <i class="iconfont icon-user"></i>
-          <i class="iconfont icon-key"></i>
-          <input type="text" class="input_txt" placeholder="邮箱/手机号" />
-          <input type="password" class="input_pass" placeholder="密码" />
-          <!-- <input type="submit" class="input_sub" value="登 录" /> -->
-          <input type="button" class="input_sub" value="登录">
-        </form>
+<body>
+  <div class="main_wrap">
+    <div class="header">
+      <a href="#" class="logo"><img src="images/logo.png" alt="" /></a>
+      <div class="copyright">
+        CopyRight © 2019 深圳百秀信息技术股份有限公司<br />All Rights Reserved
       </div>
     </div>
-    <!-- bootstarp的弹出框 -->
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="myModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">提示框!!</h4>
-          </div>
-          <div class="modal-body my-modal-body"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              狠心关闭
-            </button>
-            <button type="button" class="btn btn-primary">残忍确认</button>
-          </div>
+
+    <div class="login_form_con">
+      <div class="login_title"></div>
+      <form class="login_form">
+        <i class="iconfont icon-user"></i>
+        <i class="iconfont icon-key"></i>
+        <input type="text" class="input_txt" placeholder="邮箱/手机号" />
+        <input type="password" class="input_pass" placeholder="密码" />
+        <!-- <input type="submit" class="input_sub" value="登 录" /> -->
+        <input type="button" class="input_sub" value="登录">
+      </form>
+    </div>
+  </div>
+  <!-- bootstarp的弹出框 -->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">提示信息</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
+
 <script src="./js/jquery-1.12.4.min.js"></script>
+<script src="./tool/config.js"></script>
+<script src="./js/bootstrap/js/bootstrap.min.js"></script>
+<script src="./tool/user.js"></script>
 <script>
-    //实现功能：
-    // 1.给登录按钮设置点击事件
-    $('.input_sub').on('click',function(){
-      // 获取输入框内容判断输入框内容是否为空
-      var txt = $('.input_txt').val();
-      var pass = $('.input_pass').val();
-      if(txt.trim() == '' || pass.trim() == ''){
-        alert('请把内容填写完整！~');
-        return;
-      }
-      $.ajax({
-        type : 'post',
-        url : 'http://localhost:8000/admin/login',
-        data : {
-          user_name : txt,
-          password : pass,
-        },
-        success : function(res){
-          // 根据服务端响应的状态进行对应检测操作
-          if(res.code === 200){
-            // 跳转到首页
-            location.href = './index.html';
-          }else{
-            alert('用户名或密码错误');
-          }
-        },
-      });
+  //实现功能：
+  // 1.给登录按钮设置点击事件
+  $('.input_sub').on('click', function () {
+    // 获取输入框内容判断输入框内容是否为空
+    var txt = $('.input_txt').val();
+    var pass = $('.input_pass').val();
+    if (txt.trim() == '' || pass.trim() == '') {
+      // find():查找那个类或者id
+      $('#myModal').modal('show').find('.modal-body').text('请完整填写用户名或密码内容!~');
+      return;
+    }
+    // 发送请求
+    user.login({
+      data: {
+        user_name: txt,
+        password: pass,
+      },
+      callback: function (res) {
+        // 根据服务端响应的状态进行对应检测操作
+        if (res.code === 200) {
+          // 跳转到首页
+          location.href = './index.html';
+        } else {
+          // find():查找那个类或者id
+          $('#myModal').modal('show').find('.modal-body').text('用户名或密码输入错误!~');
+        }
+      },
     });
+  });
 </script>
