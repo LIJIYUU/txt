@@ -11,4 +11,12 @@ var user = {
             success: option.callback
         });
     },
+    // logout首页突出
+    logout: function (option) {
+        $.ajax({
+            type: 'post',
+            url: USER_LOGOUT,
+            success: option.callback
+        });
+    },
 };
