@@ -19,4 +19,11 @@ var user = {
             success: option.callback
         });
     },
+    // getuser首页用户信息获取接口
+    getuser: function (option) {
+        $.ajax({
+            url: USER_GETINFO,
+            success: option.callback
+        });
+    },
 };
